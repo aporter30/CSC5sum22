@@ -1,1 +1,425 @@
+/* 
+ * File:   main.cpp
+ * Author: Alejandro Porter
+ * Created on July 14th, 2022, 10:18 PM
+ * Purpose: Assignment 4 - Menu
+ */
 
+//System Libraries
+#include <iostream>   //Input/Output Library
+#include <string>
+#include <iomanip>
+#include <cmath>
+using namespace std;  //STD Name-space where Library is compiled
+
+//User Libraries
+
+//Global Constants not Variables
+//Math/Physics/Science/Conversions/Dimensions
+
+//Function Prototypes
+
+//Code Begins Execution Here with function main
+int main(int argc, char** argv) {
+    //Set random number seed once here
+    
+    //Declare variables here
+    int choose;//Choose a problem
+    
+    //Initialize variables here
+    do{
+        //List of Problems which can be run by the program
+        cout<<"Choose from the following Menu Items"<<endl;
+        cout<<"Problem 1"<<endl;
+        cout<<"Problem 2"<<endl;
+        cout<<"Problem 3"<<endl;
+        cout<<"Etc......"<<endl;
+        cout<<"10 or greater, all negatives to exit"<<endl;
+        cin>>choose;
+        
+        switch(choose){
+            case 1: cout<<"PROBLEM 1\n";
+                   //Declare Variables
+                   int sum,    
+                       piv;     //positive integer value
+                   //Initialize or input i.e. set variable values
+                   sum = 0;
+                   //Ask for Positive Integer Value
+                   cout<<"Input Positive Integer Value\n";
+                   cin>>piv;
+                   //Map inputs -> outputs
+                   for(int i=0; i<=piv; i++){
+                   sum+=i;                 //sum=sum+i
+                   }
+                   //Display the Outputs
+                   cout<<"Sum = "<<sum<<endl;
+                   break;
+                   
+            case 2:cout<<"PROBLEM 2\n";
+                    //Declare Variables
+                   int ndays;                      //number of days
+                   float penny,
+                         total;
+                   penny = 0.01;
+                   total=0.0;
+                   //Map Inputs to Outputs
+                   cout<<"Input Number of Days\n";
+                   cin>>ndays;
+                   if(ndays<1){
+                   cout<<"Number of days must be greater than 1.\n";
+                   }
+                   else{
+                       for (int i=1; i<=ndays;i++){
+                       total+=penny;             //total=total+penny
+                       penny*=2;               //penny=penny*2     //(doubles each day)
+                       }           
+                   }
+                   //Display Outputs
+                   cout<<"Pay = $" <<total<<endl;
+                   break;
+            case 3: cout<<"PROBLEM 3\n";
+                   //Declare Variables
+                   int num,    //integer to be entered
+                       min,    //minimum
+                       max;    //maximum
+                   //Initialize variable values
+                   cout<<"Enter a series of integer values, enter -99 to signal the end of the series\n";
+                   cin >> num;
+                   min = max = num;    //initalizes min and max to be the integer value entered
+                   //Map inputs to outputs
+                   while (num != -99){  //executes when number entered is not -99
+                       if (num < min)  //checks if num is less than min
+                           min = num;  //if so, sets min to be value of num
+
+                       if (num > max)  //checks if num is greater than max
+                           max = num;  //if so, sets min to be value of num
+
+                       cin >> num; //for the next number the user will input
+                    }
+                    //Display outputs
+                    cout << "Smallest number in the series is " << min << endl;
+                    cout << "Largest  number in the series is "  << max<<endl;
+                    break;
+                    
+            case 4: cout<<"PROBLEM 4\n";
+                    //Declare Variables
+                    int numb,    //number of rows and collumns
+                        rows,
+                        clms;   //collumns
+                    char lett;  //letter
+                    //Initialize or input i.e. set variable values
+                    cout<<"Enter positive integer value and letter";
+                    cin>>numb>>lett;
+                    //Map inputs -> outputs
+                    if(numb<=15){                            //number of rows/collumns cannot be greater than 15
+                        for(clms=1;clms<numb;clms++){        //iterates through collums
+                            for(rows=1;rows<=numb;rows++){   //iterates through rows
+                                cout<<lett;
+                            }
+                            cout<<endl;
+                        }
+                        for(;clms==numb;clms++){             //for the last row
+                            for(rows=1;rows<=numb;rows++){
+                                cout<<lett;
+                            }
+                        }
+                    }
+                    else{
+                    cout<<"Enter a number no greater than 15."; //input validation
+                    }
+                    break;
+                    
+            case 5:cout<<"PROBLEM 5\n";
+                    //Declare Variables
+                    int size;   //size of longest row
+    
+                    //Initialize or input i.e. set variable values
+                    cout<<"Input number to be size of longest row\n";
+                    cin>>size;
+                    //Map inputs -> outputs
+                    for(int rows=1;rows<=size;rows++){      
+                        for(int cols=1;cols<=rows;cols++){
+                        cout<<'+';
+                        }
+                        cout<<endl<<endl;
+                    }
+    
+                    for(int rows=1;rows<=size;rows++){
+                        for(int cols=1;cols<=size+1-rows;cols++){
+                            cout<<'+';
+                        }
+                        if(rows<size)           //for the end of the pattern
+                            cout<<endl<<endl;
+                    }
+                    break;
+                    
+            case 6: cout<<"PROBLEM 6\n";
+                    //Declare Variables
+                    float ltog;
+                    int lits1,      //liters for first car
+                        lits2,      //liters for second car
+                        nmiles1,    //number of miles for first car
+                        nmiles2;    //number of miles for second car
+                    char c,
+                         a,    //choice 1 - YES
+                         b;    //choice 2 - NO
+                    //Initialize or input i.e. set variable values
+                    ltog=0.264197;
+                    a='y';
+                    b='n';
+                    //Map inputs -> outputs
+                    do{
+                        //car 1
+                        cout<<"Enter number of liters of gasoline:\n\n";
+                        cin>>lits1;
+                        cout<<"Enter number of miles traveled:\n\n";
+                        cin>>nmiles1;
+                        cout<<"miles per gallon:\n";
+                        //mpg calculation
+                        cout<<fixed<<setprecision(2)<<nmiles1/(lits1*ltog);
+                        //ask user to repeat calculation
+                        cout<<"\nAgain:\n\n";
+                        cin>>c;
+                        //car 2
+                        cout<<"Enter number of liters of gasoline:\n\n";
+                        cin>>lits2;
+                        cout<<"Enter number of miles traveled:\n\n";
+                        cin>>nmiles2;
+                        cout<<"miles per gallon:\n";
+                        //mpg calculation
+                        cout<<nmiles2/(lits2*ltog)<<endl;
+                        //ask user to repeat calculation
+                        cout<<"Again:\n";
+                        cin>>c;
+                        if(c==b){
+                            break;
+                        }
+                    while(c==a){
+                        //car 1
+                        cout<<"Enter number of liters of gasoline:\n\n";
+                        cin>>lits1;
+                        cout<<"Enter number of miles traveled:\n\n";
+                        cin>>nmiles1;
+                        cout<<"miles per gallon:\n";
+                        //mpg calculation
+                        cout<<fixed<<setprecision(2)<<nmiles1/(lits1*ltog);
+                        //ask user to repeat 
+                        cout<<"\nAgain:\n\n";
+                        cin>>c;
+                        //car 2
+                        cout<<"Enter number of liters of gasoline:\n\n";
+                        cin>>lits2;
+                        cout<<"Enter number of miles traveled:\n\n";
+                        cin>>nmiles2;
+                        cout<<"miles per gallon:\n";
+                        //mpg calculation
+                        cout<<nmiles2/(lits2*ltog)<<endl;
+                        //ask to repeat
+                        cout<<"Again:\n";
+                        cin>>c;
+                        //if user chooses not to repeat
+                        if(c==b){
+                            break;
+                        }
+                        }
+                    }
+                    
+                    while(c==b);
+                    break;
+                    
+            case 7: cout<<"PROBLEM 7\n";
+                    //Declare Variables
+                    float ltog1;
+                    float lits11,                //liters for car 1
+                          lits22,                //liters for car 2
+                          nmiles11,              //number of miles for car 1
+                          nmiles22,              //number of miles for car 2
+                          mpg11,           //mpg for car 1
+                          mpg22;            //mpg for car2
+                    char c1,
+                         a1,                 //choice 1 - YES
+                         b1;                 //choice 2 - NO
+                    //Initialize or input i.e. set variable values
+                    a1='y';
+                    b1='n';
+                    ltog1 =0.264179;
+                    mpg11 = 0,             //mpg for car 1
+                    mpg22 = 0;             //mpg for car2
+                    //Map inputs -> outputs
+                    do{
+                            //car 1
+                            cout<<"Car 1\n";
+                            cout<<"Enter number of liters of gasoline:\n";
+                            cin>>lits11;
+                            cout<<"Enter number of miles traveled:\n";
+                            cin>>nmiles11;
+                            cout<<"miles per gallon: ";
+                            //mpg for car 1
+                            mpg11=nmiles11/(lits11*ltog1);
+                            cout<<fixed<<setprecision(2)<<mpg11<<endl<<endl;     //two decimal places
+                            //car 2
+                            cout<<"Car 2\n";
+                            cout<<"Enter number of liters of gasoline:\n";
+                            cin>>lits22;
+                            cout<<"Enter number of miles traveled:\n";
+                            cin>>nmiles22;
+                            cout<<"miles per gallon: ";
+                            //mpg for car 2 
+                            mpg22=nmiles22/(lits22*ltog1);
+                            cout<<mpg22<<endl<<endl;
+                            //determine which car is more fuel efficient
+                            if(mpg11>mpg22)
+                                cout<<"Car 1 is more fuel efficient\n\n";
+                            else
+                                cout<<"Car 2 is more fuel efficient\n\n";
+                            //ask user to repeat
+                            cout<<"Again:\n\n";
+                            cin>>c1;
+        
+                    while(c1==a1){     //user chooses to repeat
+                            //car 1
+                            cout<<"Car 1\n";
+                            cout<<"Enter number of liters of gasoline:\n";
+                            cin>>lits11;
+                            cout<<"Enter number of miles traveled:\n";
+                            cin>>nmiles11;
+                            cout<<"miles per gallon: ";
+                            //mpg for car 1
+                            mpg11=nmiles11/(lits11*ltog1);
+                            cout<<fixed<<setprecision(2)<<mpg11<<endl<<endl;
+                            //car 2
+                            cout<<"Car 2\n";
+                            cout<<"Enter number of liters of gasoline:\n";
+                            cin>>lits22;
+                            cout<<"Enter number of miles traveled:\n";
+                            cin>>nmiles22;
+                            cout<<"miles per gallon: ";
+                            //mpg for car 2
+                            mpg22=nmiles22/(lits22*ltog1);
+                            cout<<mpg22<<endl<<endl;
+                            //determine which car is more fuel efficient
+                            if(mpg11>mpg22)
+                                cout<<"Car 1 is more fuel efficient\n\n";
+                            else
+                                cout<<"Car 2 is more fuel efficient\n\n";
+                            //ask user to repeat
+                            cout<<"Again:\n";
+                            cin>>c1;
+                            //if user decides to stop
+                            if(c1==b){
+                                break;
+                            }
+                    }
+                    }
+                    while(c1==a1);
+                    break;
+            case 8: cout<<"PROBLEM 8\n";
+                    //Declare Variables
+                    
+                    float cp,   //current price
+                          yap,  //year ago price
+                          ir;  //interest rate
+                    char choice,
+                         ch1, //choice 1
+                         ch2; //choice 2
+                    //Initialize or input i.e. set variable values
+                    ch1='y';
+                    ch2='n';
+                    //Map inputs -> outputs
+                    do{
+                        cout<<fixed<<setprecision(2);       //two decimal places
+                        cout<<"Enter current price:\n";
+                        cin>>cp;
+                        cout<<"Enter year-ago price:\n";
+                        cin>>yap;
+                        //Interest Rate Calculation
+                        ir=((cp-yap)/yap*100);
+                        cout<<"Inflation rate: "<<ir<<"%\n\n";
+                        //Ask the user to repeat calculation
+                        cout<<"Again:\n";
+                        cin>>choice;
+                        //If user chooses not to repeat calculation
+                        if(choice=='n')
+                            break;
+                        cout<<endl;
+                    }
+                    while(choice==ch1||choice==ch2);
+                    break;
+            case 9:cout<<"PROBLEM 9\n";
+                    //Declare Variables
+                    float cp1,   //current price
+                          yap1,  //year ago price
+                          ir1,   //interest rate
+                          onyr1, //one year
+                          twyr1; //two year
+                    char choice1,
+                         ch11, //choice 1
+                         ch22; //choice 2
+                    //Initialize or input i.e. set variable values
+                    ch11='y';
+                    ch22='n';
+                    //Map inputs -> outputs
+                    do{
+                        cout<<fixed<<setprecision(2);       //two decimal places
+                        cout<<"Enter current price:\n";
+                        cin>>cp1;
+                        cout<<"Enter year-ago price:\n";
+                        cin>>yap1;
+                        //interest rate calculation
+                        ir1=((cp1-yap1)/yap1*100);          
+                        cout<<"Inflation rate: "<<ir1<<"%\n\n";
+                        //estimated price of the item in one year
+                        onyr1=(((ir1/100)*cp1)+cp1);            
+                        cout<<"Price in one year: $"<<onyr1<<endl;
+                        //estimated price of the item in two years 
+                        twyr1=(((ir1/100)*onyr1)+onyr1);
+                        cout<<"Price in two year: $"<<twyr1<<endl<<endl;
+                        //Ask to repeat calculation
+                        cout<<"Again:\n";
+                        cin>>choice;
+                        //If user chooses not to repeat calculation
+                        if(choice1=='n')
+                            break;
+                        cout<<endl;
+                    }
+                    while(choice1==ch11||choice==ch22);
+                    break;
+            case 10:cout<<"PROBLEM 10\n";
+                    //Declare Variables
+                    float num1, //number 1
+                        num2, //number 2
+                        num3; //number 3
+                    //Initialize or input i.e. set variable values
+                    //Map inputs -> outputs
+                    cout<<"Enter first number:\n\n";
+                    cin>>num1;
+                    cout<<"Enter Second number:\n\n";
+                    cin>>num2;
+                    cout<<"Enter third number:\n\n";
+                    cin>>num3;
+                   
+                    //Display the outputs
+                    cout<<"Largest number from two parameter function:\n";
+                    if(num1>num2){              //if num1 is larger
+                        cout<<num1<<endl;
+                    }
+                    else{
+                        cout<<num2<<endl;       //if num2 is larger
+                    }
+    
+                    cout<<"\nLargest number from three parameter function:\n";
+                    if(num1>num2&&num1>num3){   //if num1 is the largest
+                        cout<<num1<<endl;
+                    }
+                    else if(num2>num1&&num2>num3){
+                        cout<<num2<<endl;       //if num2 is the largest
+                    }
+                    else
+                        cout<<num3<<endl;       //if num3 is the largest;
+                    break;
+            default:cout<<"Exiting the Menu"<<endl;
+        }
+    }while(choose>=0 && choose<=10);
+
+    return 0;
+}
