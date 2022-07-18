@@ -1,1 +1,91 @@
+/* 
+ * File:   main.cpp
+ * Author: Alejandro Porter
+ * Created on June 29, 2022, 9:45 PM
+ * Purpose: Lab Exercise 1 - Using Given Spreadsheet to Calculate Cost of Each Gas Station
+ */
 
+//System Libraries
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//User Libraries
+
+//Global Constants
+//Mathematical/Physics/Conversions, Higher dimensioned arrays
+
+//Function Prototypes
+
+//Execution begins here
+int main(int argc, char** argv) {
+    
+    //GALLONS NEEDED FOR A FULL TANK
+    //Declare Variables
+    float GTS,   //Gas Tank Size
+          GGF,   //Gas Gage % Full
+          gsmlg, //Gas Mileage mpg
+          GNFFT; //Gas Needed to Fill Up
+    //Initialize Variables
+    GTS = 22;    //Gallons
+    GGF = 0.75;  //Percentage full on Gas Dial
+    gsmlg = 17;  //MPG
+    //Map Inputs to Outputs
+    GNFFT = GTS*(1-GGF);
+    //Display Results
+    cout<<"Gallons Needed for a Full Tank - "<<GNFFT<<" Gallons\n"<<endl;
+    
+    //CALCULATE THE COST OF GAS STATION 1
+    //Declare Variables
+    float RGPPG, //Regular Gas Price Per Gallon for Station 1
+          MTGS,  //Miles to Gas Station 1
+          tdist, //Total Distance Driven Back and Forth to Gas Station 1 in Miles
+          CTFU,  //Cost to Fill Up
+          cdist, //Cost to Drive Distance to and from Gas Station 1
+          tcost, //Total Cost With Mileage to Gas Station 1
+          PPGWM; //Price per Gallon When Adding in Mileage to Station 1
+    //Initialize Variables
+    RGPPG = 4.25; //$
+    MTGS = 10;    //miles
+    tdist = 20;   //miles
+    //Map Inputs to Outputs
+    CTFU = RGPPG*GNFFT;        //$
+    cdist = tdist/gsmlg*RGPPG; //$
+    tcost = CTFU + cdist;      //$
+    PPGWM = tcost/GNFFT;       //$ per gallon
+    //Display Results
+    cout<<"GAS STATION 1\n";
+    cout<<fixed<<setprecision(2)<<showpoint;
+    cout<<"Cost to Fuel Up - $"<<CTFU<<endl;
+    cout<<"Cost to Drive Distance to and from Gas Station - $"<<cdist<<endl;
+    cout<<"Total Cost With Mileage to Gas Station - $"<<tcost<<endl;
+    cout<<"Price per Gallon When Adding in Mileage to Station - $"<<PPGWM<<" per gallon\n\n";
+    
+    //CALCULATE THE COST OF GAS STATION 2
+    //Declare Variables
+    float RGPPG2, //Regular Gas Price Per Gallon for Station 2
+          MTGS2,  //Miles to Gas Station 2
+          tdist2, //Total Distance Driven Back and Forth to Gas Station 2 in Miles
+          CTFU2,  //Cost to Fill Up fir Station 2
+          cdist2, //Cost to Drive Distance to and from Gas Station 2
+          tcost2, //Total Cost With Mileage to Gas Station 2
+          PPGWM2; //Price per Gallon When Adding in Mileage to Station 2
+    //Initialize Variables
+    RGPPG2 = 4.09;
+    MTGS2 = 20;
+    tdist2 = 40;
+    //Map Inputs to Outputs
+    CTFU2 = RGPPG2*GNFFT;
+    cdist2 = tdist2/gsmlg*RGPPG2;
+    tcost2 = CTFU2 + cdist2;
+    PPGWM2 = tcost2/GNFFT;
+    //Display Results
+    cout<<"GAS STATION 2\n";
+    cout<<fixed<<setprecision(2)<<showpoint;
+    cout<<"Cost to Fuel Up - $"<<CTFU2<<endl;
+    cout<<"Cost to Drive Distance to and from Gas Station - $"<<cdist2<<endl;
+    cout<<"Total Cost With Mileage to Gas Station - $"<<tcost2<<endl;
+    cout<<"Price per Gallon When Adding in Mileage to Station - $"<<PPGWM2<<" per gallon\n";
+    //Exit Stage Right
+    return 0;
+}
