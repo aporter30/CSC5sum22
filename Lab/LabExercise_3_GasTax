@@ -1,1 +1,57 @@
+/* 
+ * File:   main.cpp
+ * Author: Alejandro Porter
+ * Created on July 8, 2022, 10:46 AM
+ * Purpose: Lab Assignment 3 - Calculating the percentage gas tax on a gallon of gas
+ */
 
+//System Libraries
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//User Libraries
+
+//Global Constants
+//Mathematical/Physics/Conversions, Higher dimensioned arrays
+
+//Function Prototypes
+
+//Execution begins here
+int main(int argc, char** argv) {
+    
+    //Declare Variables
+    float cstpg,    //gas Cost per gallon (in dollars)
+          amttx,    //amount of tax collected by government (in dollars)
+          PGT,      //Percentage Gas Tax
+          MAT,      //Money After Taxes(in dollars)
+          pftmd;   //Profit Made by gas companies (in dollars)
+    
+    //Input the amount it cost you per gallon the last time you put gas in your car
+    cout<<"Input the amount it cost you per gallon the last time you put gas in your car:\n";
+    cin>>cstpg;                                 //dollars
+    
+    //Calculate total Taxes on 1 gallon
+    amttx = (cstpg*0.08) + 0.39 + .10 + .184;   //includes 8% sales tax, 39 cent excise tax, 10 cent cap and trade tax, and 18.4 cent federal excise tax
+    
+    //Calculate cost of sale after taxes
+    MAT = cstpg - amttx;                        //Money after total tax amount is subtracted
+    
+    //Calculate Percentage Gas Tax
+    PGT = (amttx/cstpg)*100;                    //(all taxes per cost per gallon)*100
+    
+    //Calculate profit made from 1 gallon of gas 
+    pftmd = MAT * 0.065;                        //6.5% oil company profit
+    
+    //Display Percentage Gas Tax on 1 gallon
+    cout<<fixed<<setprecision(2)<<"Percentage Gas Tax on a gallon of gas = "<<PGT<<"%\n";
+    
+    //Display profit made by gas company
+    cout<<"Profit made by the gas company from a gallon of gas = $"<<pftmd<<endl;
+    
+    //Taxes to the government
+    cout<<"Amount of taxes to the government = $"<<amttx<<endl;
+    
+    //Exit Stage Right
+    return 0;
+}
