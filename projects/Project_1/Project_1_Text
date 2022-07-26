@@ -1,0 +1,27 @@
+/* 
+ * File:   main.cpp
+ * Author: Alejandro Porter
+ * Created on June 23, 2022, 1:22 PM
+ * Purpose: C++ Template - To be used in all future assignments
+ */
+
+//System Libraries
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main () {
+  ofstream myfile ("Project1.txt");
+  if (myfile.is_open()){
+    myfile <<cout<<"  "<<"-----  ---  \\     | |\\  \\     /  |      ---  \\     | |\\ "<<endl;
+    myfile <<cout<<"  "<<"|     |   | |\\    | | \\  \\   /   |     |   | |\\    | | \\ "<<endl;
+    myfile <<cout<<"  "<<"|     |   | | \\   | |  \\  \\ /    |     |   | | \\   | |  \\ "<<endl;
+    myfile <<cout<<"  "<<"|     |---| |  \\  | |  /   |     |     |---| |  \\  | |  / "<<endl;
+    myfile <<cout<<"  "<<"|     |   | |   \\ | | /    |     |     |   | |   \\ | | / "<<endl;
+    myfile <<cout<<"  "<<"|____ |   | |    \\| |/     |     |____ |   | |    \\| |/ "<<endl;
+    myfile <<cout<<"  "<<"Welcome to the game of Candyland"<<endl;
+    myfile.close();
+  }
+  else cout << "Unable to open file";
+  return 0;
+}
