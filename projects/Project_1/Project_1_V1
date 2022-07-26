@@ -1,1 +1,74 @@
+/* 
+ * File:   main.cpp
+ * Author: Alejandro Porter
+ * Created on June 23, 2022, 1:22 PM
+ * Purpose: C++ Template - To be used in all future assignments
+ */
 
+/* 
+ * File:   main.cpp
+ * Author: Alejandro Porter
+ * Created on July 18, 2022, 9:16 PM
+ * Purpose: Project One - CandyLand Game
+ */
+
+//System Libraries - ALL HAVE TO BE USED
+#include <iostream> //input output library--used
+#include <iomanip>  //format library--------used
+#include <cmath>    //math library----------used
+#include <cstdlib>  //rand function---------used
+#include <fstream>  //File Input------------used
+#include <string>   //string library--------used
+#include <ctime>    //srand-----------------used
+using namespace std;
+
+//User Libraries
+//Global Constants - NO GLOBAL VARIABLES
+const short int VICT=85;                    //Victory Condition
+
+//Function Prototypes
+void pturn();                               //Process/Display Player Turn
+
+//Execution begins here
+int main(int argc, char** argv) {
+    //Initialize the Random Number Seed
+    srand(time(NULL));
+    //Declare Variables - NO DOUBLES - 7 CHARACTERS
+    string begin;           //To start the game
+    string p1pawn,          //Player 1 Pawn color
+           p2pawn;          //Player 2 Pawn color
+    int color1,             //How user will input pawn color 1
+        color2;             //How user will input pawn color 2
+    //Initialize Variables
+    //READING CANDYLAND HEADER FILE FROM Project1.txt FILE
+    string line;
+    ifstream myfile ("Project1.txt");
+    if (myfile.is_open()){
+        while(getline (myfile,line)){
+            cout<<line<<'\n';
+        }
+        myfile.close();
+    }
+    else cout << "Unable to open file"; 
+    //PROMPT USER TO PRESS ENTER TO START GAME
+    cout<<"Object: Be the first player to reach the Candy Castle by "
+            "making it to end of the path.\n\n";
+    cout<<"Contents: 1 Colorful Gameboard with 85 linear spaces\n";
+    cout<<setw(40)<<"2 Gingerbread Character Pawns\n";
+    cout<<setw(33)<<"64 Cards Numbered 1-5\n\n";
+    cout<<"Game Rules: Draw a card from the deck. The number on the card is how many spaces you move forward.\n";
+    cout<<setw(83)<<"If you land on a shortcut tile, you will move forward even more tiles.\n";
+    cout<<setw(68)<<"The First Player to Reach the last tile to win the game!\n\n";
+    cout<<"Type 'Begin' to begin your journey or 'Exit' to leave the game.\n";
+    cin>>begin;
+    //INPUT VALIDATION
+    if(begin!="Begin"){
+        cout<<"Error! Invalid Input.";
+    }
+    //START GAME
+    else if(begin=="Begin"){
+    
+    }
+    //Exit Stage Right
+    return 0;
+}
